@@ -1,0 +1,56 @@
+view.jsp
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chi tiết sản phẩm</title>
+    <style>
+        *{box-sizing:border-box}
+        body{font-family:'Segoe UI',Arial,sans-serif;background:#f5f7fa;display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0;padding:20px}
+        .box{background:#fff;padding:36px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.1);width:520px}
+        h2{color:#1b2a7a;margin:0 0 20px;text-align:center;padding-bottom:12px;border-bottom:2px solid #e0e7ff}
+        table{width:100%;margin-bottom:20px}
+        td{padding:12px 0;font-size:15px;border-bottom:1px solid #f1f5f9;vertical-align:top}
+        .label{font-weight:600;color:#64748b;width:38%}
+        .value{color:#1e293b;font-weight:500}
+        .price{color:#e74c3c;font-weight:700;font-size:18px}
+        .btn-back{display:block;text-align:center;background:#1b2a7a;color:#fff;text-decoration:none;padding:12px;border-radius:6px;font-weight:600}
+        .btn-back:hover{background:#f15a24}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>📋 Chi tiết sản phẩm</h2>
+        <table>
+            <tr>
+                <td class="label">Mã sản phẩm:</td>
+                <td class="value"><c:out value="${product.id}" /></td>
+            </tr>
+            <tr>
+                <td class="label">Tên sản phẩm:</td>
+                <td class="value"><c:out value="${product.name}" /></td>
+            </tr>
+            <tr>
+                <td class="label">Giá:</td>
+                <td class="price">
+                    <fmt:formatNumber value="${product.price}" type="number" groupingUsed="true" /> đ
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Mô tả:</td>
+                <td class="value"><c:out value="${product.description}" /></td>
+            </tr>
+            <tr>
+                <td class="label">Nhà sản xuất:</td>
+                <td class="value"><c:out value="${product.manufacturer}" /></td>
+            </tr>
+        </table>
+        <a href="${pageContext.request.contextPath}/products" class="btn-back">
+            ← Quay lại danh sách
+        </a>
+    </div>
+</body>
+</html>
